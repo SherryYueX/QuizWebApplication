@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 public class Result {
     private int id;
     private String userName;
+    private String category;
     private Timestamp quiz_start;
     private Timestamp quiz_end;
     private int score;

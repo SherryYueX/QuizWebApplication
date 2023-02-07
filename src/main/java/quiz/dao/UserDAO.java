@@ -65,8 +65,8 @@ public class UserDAO {
         jdbcTemplate.update(query, userName);
     }
 
-    public void updateUserByUserName(String userName, String password){
-        String query = "UPDATE users set password=? WHERE userName=?";
-        jdbcTemplate.update(query, userName, password);
+    public void updateUserByUserName(String userName, String status){
+        String query = "UPDATE users set status=? WHERE userName=?";
+        jdbcTemplate.update(query, status, userName);
     }
 }

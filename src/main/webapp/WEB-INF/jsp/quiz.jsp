@@ -12,7 +12,7 @@
 
 <body>
 <div>
-
+    <%@ include file="navbar.jsp" %>
     <form method="post" action="/quiz">
     <h5>Quiz Category: ${categorySelected}</h5>
     <div class="tab">
@@ -30,7 +30,7 @@
               </span>
               <input type="radio"
                      name="selectedChoiceId1"
-                     value="${choice.id}"/>
+                     value="${choice.id}" checked/>
                   ${choice.description}
           </label>
           </div>
@@ -52,7 +52,7 @@
                 </span>
                 <input type="radio"
                        name="selectedChoiceId2"
-                       value="${choice.id}"/>
+                       value="${choice.id}" checked/>
                     ${choice.description}
             </label>
             </div>
@@ -74,7 +74,7 @@
               </span>
               <input type="radio"
                      name="selectedChoiceId3"
-                     value="${choice.id}"/>
+                     value="${choice.id}" checked/>
                   ${choice.description}
           </label>
           </div>
@@ -96,7 +96,7 @@
               </span>
               <input type="radio"
                      name="selectedChoiceId4"
-                     value="${choice.id}"/>
+                     value="${choice.id}" checked/>
                   ${choice.description}
           </label>
           </div>
@@ -118,7 +118,7 @@
               </span>
               <input type="radio"
                      name="selectedChoiceId5"
-                     value="${choice.id}"/>
+                     value="${choice.id}" checked/>
                   ${choice.description}
           </label>
           </div>

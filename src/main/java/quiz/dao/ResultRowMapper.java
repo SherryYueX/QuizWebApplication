@@ -15,6 +15,7 @@ public class ResultRowMapper implements RowMapper<Result> {
         Result result = new Result();
         result.setId(rs.getInt("id"));
         result.setUserName(rs.getString("userName"));
+        result.setCategory(rs.getString("category"));
         result.setQuiz_start(rs.getTimestamp("quiz_start"));
         result.setQuiz_end(rs.getTimestamp("quiz_end"));
         result.setScore(rs.getInt("score"));

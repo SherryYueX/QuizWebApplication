@@ -13,7 +13,7 @@
     <%@ include file="navbar.jsp" %>
   <div class="container text-center">
     <h1> Failed to sign up </h1>
-    <span>${userName}</span><span> has already been taken</span><br/>
+    <span>${existingUserName}</span><span> has already been taken</span><br/>
     <a href="/login">login here</a>
   </div>
 

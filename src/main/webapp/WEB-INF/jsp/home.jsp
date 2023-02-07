@@ -57,11 +57,20 @@
             </div>
         </div>
       </div>
+      <c:forEach items="${userResults}" var="result" varStatus="loop">
+        <div class="row">
+            <div class="col">quiz_name: ${result.category}</div>
+            <div class="col">start_time: ${result.quiz_start}</div>
+            <div class="col">end_time: ${result.quiz_end}</div>
+            <div class="col">score: ${result.score}</div>
+            <div class="col">
+                <button type="submit" name="selectedResultId" value="${result.id}"> view </button>
+            </div>
+        </div>
+
+      </c:forEach>
+
     </div>
-
-
-
-
 
 
 </form>

@@ -21,10 +21,7 @@ public class SignupController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String getSignup(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        if(session != null && session.getAttribute("user") != null)
-            session.setAttribute("login", 1);
+    public String getSignup() {
         return "signup";
     }
 
@@ -40,7 +37,7 @@ public class SignupController {
                              Model model) {
         Optional<User> possibleUser = signupService.validateLogin(userName);
         if(possibleUser.isPresent()){
-            model.addAttribute("userName", userName);
+            model.addAttribute("existingUserName", userName);
             return "failedSignup";
         }
         else{

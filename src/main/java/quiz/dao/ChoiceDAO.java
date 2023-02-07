@@ -53,4 +53,9 @@ public class ChoiceDAO {
         String query = "INSERT INTO choices (id, questionId, description) values (?, ?, ?)";
         jdbcTemplate.update(query, choice.getId(), choice.getQuestionId(), choice.getDescription());
     }
+
+    public void deleteChoicesByQuestionId(int id){
+        String query = "DELETE FROM choices WHERE questionId=?";
+        jdbcTemplate.update(query, id);
+    }
 }

@@ -27,11 +27,16 @@ public class LoginController {
     public String getLogin(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);
 
+        //admin
+        if (session != null && session.getAttribute("admin") == null) {
+            session.setAttribute("is_admin", 1);
+        }
+
 //         redirect to /quiz if user is already logged in
         if (session != null && session.getAttribute("user") != null) {
             return "redirect:/home";
         }
-        model.addAttribute("login", 0);
+
 
         return "login";
     }
@@ -56,8 +61,13 @@ public class LoginController {
             HttpSession newSession = request.getSession(true);
 
             // store user details in session
+            if(userName.equals("admin")){
+                newSession.setAttribute("admin", possibleUser.get());
+                newSession.setAttribute("is_admin", 0);
+            }
             newSession.setAttribute("user", possibleUser.get());
 
+            newSession.setAttribute("login", 0);
             return "redirect:/home";
 
         } else { // if user details are invalid
@@ -70,6 +80,7 @@ public class LoginController {
         HttpSession oldSession = request.getSession(false);
         // invalidate old session if it exists
         if(oldSession != null) oldSession.invalidate();
+
         return "redirect:/login";
     }
 }

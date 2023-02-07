@@ -2,14 +2,10 @@ package quiz.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Service;
-import quiz.dao.ChoiceDAO;
-import quiz.dao.QuestionDAO;
-import quiz.dao.ResultDAO;
-import quiz.domain.Choice;
-import quiz.domain.Question;
-import quiz.domain.Result;
-import quiz.domain.User;
+import quiz.dao.*;
+import quiz.domain.*;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -21,8 +17,10 @@ public class QuestionService {
     private final ChoiceDAO choiceDAO;
     private final ResultDAO resultDAO;
 
+
     @Autowired
-    public QuestionService(QuestionDAO questionDao, ChoiceDAO choiceDAO, ResultDAO resultDAO) {
+    public QuestionService(QuestionDAO questionDao, ChoiceDAO choiceDAO, ResultDAO resultDAO,
+    FeedbackDAO feedbackDAO) {
         this.questionDao = questionDao;
         this.choiceDAO = choiceDAO;
         this.resultDAO = resultDAO;
@@ -54,6 +52,14 @@ public class QuestionService {
         return questionDao.getQuestionsByCategory(category);
     }
 
+    public Question getQuestionById(int id){
+        return questionDao.getQuestionById(id);
+    }
+
+    public void deleteQuestionByQuestionId(int id){
+        questionDao.deleteQuestionByQuestionId(id);
+    }
+
     public List<Choice> getChoicesByqid(int qid) {
         return choiceDAO.getChoicesByQuestionId(qid);
     }
@@ -62,7 +68,23 @@ public class QuestionService {
         return choiceDAO.getChoiceById(id);
     }
 
-    public  Optional<Result> validateResult(int id){
+    public void deleteChoicesByQuestionId(int id){ choiceDAO.deleteChoicesByQuestionId(id);}
+
+    public List<Result> getResultsByUserName(String userName){
+        return resultDAO.getResultsByUserName(userName);
+    }
+
+    public List<Result> getAllResults(){
+        return resultDAO.getAllResult();
+    }
+
+    public Result getResultById(int id) { return resultDAO.getResultById(id); }
+    public void deleteResultByChoiceId(int id){
+        resultDAO.deleteResultByChoiceId(id);
+    }
+
+
+    public Optional<Result> validateResult(int id){
         return resultDAO.getAllResult().stream()
                 .filter(a -> a.getId()==id)
                 .findAny();
@@ -79,4 +101,6 @@ public class QuestionService {
                 .filter(a -> a.getId()==id)
                 .findAny();
     }
+
+
 }

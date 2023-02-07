@@ -19,27 +19,48 @@
         <ul class="navbar-nav">
             <li class="nav-item">
                 <c:choose>
-                    <c:when test="${login == 0}">
-                        <a class="nav-link" href="/login">Login</a>
+                    <c:when test="${sessionScope.login == 0}">
+                        <a class="nav-link" href="/logout">Logout</a>
                     </c:when>
                     <c:otherwise>
-                        <a class="nav-link" href="/logout">Logout</a>
+                        <a class="nav-link" href="/login">Login</a>
                     </c:otherwise>
                 </c:choose>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/home"> |  home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup"> |  Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/feedback"> |  Feedback</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="message"> |  Contact Us</a>
+            </li>
 
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/home">home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/signup">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Feedback</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-            </li>
+            <c:if test="${sessionScope.is_admin == 0}">
+                <li class="nav-item">
+                    <a class="nav-link" href="/addQuiz"> |  Add Question</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/deleteQuestion"> |  Delete question</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allUsers"> |  Manage users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allMessages"> |  Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allFeedback"> |  View Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/allResults"> |  All Results</a>
+                </li>
+            </c:if>
+
         </ul>
     </div>
 </nav>

@@ -197,3 +197,11 @@ label .glyphicon {
 .modal-body {
     min-height: 300px;
 }
+
+.ratingMargin{
+    margin: 0 30%;
+}
+
+.listMargin{
+    margin: 0 15%;
+}

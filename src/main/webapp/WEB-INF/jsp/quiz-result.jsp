@@ -7,11 +7,12 @@
 
 <body>
 <div>
-    <p>Quiz name: ${categorySelected}</p>
-    <p>User full name: ${sessionScope.user.firstName}  ${sessionScope.user.lastName}</p>
+    <%@ include file="navbar.jsp" %>
+    <p>Quiz name: ${sessionScope.result.category}</p>
+    <p>User full name: ${sessionScope.selectedUser.firstName}  ${sessionScope.selectedUser.lastName}</p>
     <p>Start time: ${sessionScope.result.quiz_start}</p>
     <p>End time: ${sessionScope.result.quiz_end}</p>
-    <p>Username: ${sessionScope.user.userName}</p>
+    <p>Username: ${sessionScope.selectedUser.userName}</p>
 
     <hr class="dashed">
 
